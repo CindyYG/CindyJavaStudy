@@ -18,21 +18,24 @@ public class StringReversePractise {
         4. Consider Input exceptions.
          */
         // Here we go~
-        String s1 = "abcdefg";
-        System.out.println("The original String is " + s1);
-        String s2 = StringReverse(s1, 2, 6);
+        String str = "abcdefg";
+        System.out.println("The original String is " + str);
+        try{
+            str = StringReverse(str, 6, 2);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            return;// When the exception is thrown, the program will stop here.
+        }
         System.out.println("=============================");
-        System.out.println("The reversed String is " + s2);
+        System.out.println("The reversed String is " + str);
     }
 
     public static String StringReverse(String str, int startIndex, int endIndex){ //throws RuntimeException {//Wrong
     //Why RuntimeException? If checked Exception, it require the main method to declare or handle it.
         if(str == null) {
-            System.out.println("The input String is null");
-            //throw RuntimeException;//No need to write this statement, since JVM will throw "NullPointerException"
-        }else if (!(startIndex > 0 && startIndex < endIndex && endIndex < str.length())){
-            System.out.println("The input index is not valid");
-            //throw IllegalArgumentException;
+            throw new NullPointerException("The input String is null");
+        }else if (!(startIndex >= 0 && startIndex < endIndex && endIndex < str.length())){
+            throw new IllegalArgumentException ("The input index is not valid");
         }
         // 1. String is immutable, so it needs to be convert to char[] charArray first.
         char[] charArray = str.toCharArray();
