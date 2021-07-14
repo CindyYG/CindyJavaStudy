@@ -16,13 +16,15 @@ public class BubbleSortTest {
         //Try git commit.
         //1. initialize an int array
         int[] arr = {44, 55, 22, 33, 11};
-        int temp;
+        int temp;//Is this local variable? Why not require initialization?
+                 //An: Yes, it is local variable. While, since it is not used now, it is ok to be declared
+                 // only. Just remember to initialize it before using it.
         //2. Find the largest number of the array, and save it as the last element in the array.
         //3. Use loop to repeat 2. to find the rest of the elements in order.
         for (int i = 0; i < arr.length-1; i++) {
             for (int j = 0; j < arr.length - 1 - i; j++) {
                 if (arr[j] > arr[j + 1]) {
-                    temp = arr[j];
+                    temp = arr[j];//initialize temp here.
                     arr[j] = arr[j + 1];
                     arr[j + 1] = temp;
                 }
